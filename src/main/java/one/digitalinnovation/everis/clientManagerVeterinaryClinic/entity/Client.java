@@ -24,7 +24,4 @@ public class Client {
     @Column(nullable = false)
     private String telefone;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "animal_id")
-    private Animal animal;
 }
