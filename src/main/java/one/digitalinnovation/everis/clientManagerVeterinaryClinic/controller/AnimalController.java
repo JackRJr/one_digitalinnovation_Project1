@@ -2,6 +2,7 @@ package one.digitalinnovation.everis.clientManagerVeterinaryClinic.controller;
 
 import one.digitalinnovation.everis.clientManagerVeterinaryClinic.dto.AnimalDTO;
 import one.digitalinnovation.everis.clientManagerVeterinaryClinic.dto.MessageResponseDTO;
+import one.digitalinnovation.everis.clientManagerVeterinaryClinic.exception.AnimalNotFoundException;
 import one.digitalinnovation.everis.clientManagerVeterinaryClinic.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class AnimalController {
     }
 
     @GetMapping("/{id}")
-    public AnimalDTO findById(@PathVariable Long id){
+    public AnimalDTO findById(@PathVariable Long id) throws AnimalNotFoundException {
         return animalService.findById(id);
     }
 }
