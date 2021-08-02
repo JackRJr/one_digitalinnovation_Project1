@@ -4,10 +4,7 @@ import one.digitalinnovation.everis.clientManagerVeterinaryClinic.dto.AnimalDTO;
 import one.digitalinnovation.everis.clientManagerVeterinaryClinic.dto.MessageResponseDTO;
 import one.digitalinnovation.everis.clientManagerVeterinaryClinic.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -25,5 +22,10 @@ public class AnimalController {
     @PostMapping //
     public MessageResponseDTO create(@RequestBody @Valid AnimalDTO animalDTO){
         return animalService.create(animalDTO);
+    }
+
+    @GetMapping("/{id}")
+    public AnimalDTO findById(@PathVariable Long id){
+        return animalService.findById(id);
     }
 }

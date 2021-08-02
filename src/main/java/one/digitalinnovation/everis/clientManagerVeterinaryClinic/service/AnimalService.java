@@ -8,6 +8,8 @@ import one.digitalinnovation.everis.clientManagerVeterinaryClinic.repository.Ani
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AnimalService {
 
@@ -28,5 +30,10 @@ public class AnimalService {
         return MessageResponseDTO.builder()
                 .message("Animal created with ID: " + savedAnimal.getId())
                 .build();
+    }
+
+    public AnimalDTO findById(Long id) {
+        Optional<Animal> optionalAnimal = animalRepository.findById(id);
+        return animalMapper.toDTO(optionalAnimal.get());
     }
 }
